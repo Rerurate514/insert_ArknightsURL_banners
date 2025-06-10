@@ -2,11 +2,11 @@ import { ImageSelectModal } from 'lib/features/ui/modal/image_select_modal';
 import { App, MarkdownView, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
 interface MyPluginSettings {
-	mySetting: string;
+	bannerProperty: string;
 }
 
 const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
+	bannerProperty: 'banner'
 }
 
 export default class MyPlugin extends Plugin {
@@ -22,7 +22,7 @@ export default class MyPlugin extends Plugin {
 				const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
 				if (markdownView) {
 					if (!checking) {
-						new ImageSelectModal(this.app).open();
+						new ImageSelectModal(this.app, this).open();
 					}
 
 					return true;
@@ -66,13 +66,13 @@ class SampleSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName('Setting #1')
-			.setDesc('It\'s a secret')
+			.setName('insert arknights url property')
+			.setDesc('default is "banner"')
 			.addText(text => text
-				.setPlaceholder('Enter your secret')
-				.setValue(this.plugin.settings.mySetting)
+				.setPlaceholder('default is "banner"')
+				.setValue(this.plugin.settings.bannerProperty)
 				.onChange(async (value) => {
-					this.plugin.settings.mySetting = value;
+					this.plugin.settings.bannerProperty = value;
 					await this.plugin.saveSettings();
 				}));
 	}

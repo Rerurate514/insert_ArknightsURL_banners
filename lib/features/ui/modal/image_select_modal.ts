@@ -1,4 +1,5 @@
 import { ImageRepository } from "lib/features/repository/image_repository";
+import MyPlugin from "main";
 import { App, Modal } from "obsidian";
 
 export class ImageSelectModal extends Modal {
@@ -12,8 +13,11 @@ export class ImageSelectModal extends Modal {
     private loadingElement: HTMLElement | null = null;
     private isLoading = false;
 
-    constructor(app: App) {
+    private plugin: MyPlugin;
+
+    constructor(app: App, plugin: MyPlugin) {
         super(app);
+        this.plugin = plugin;
         this.imgRepo = new ImageRepository();
 
         this.totalPages = Math.ceil(this.IMAGE_TOTAL / this.pageSize);
@@ -308,7 +312,7 @@ export class ImageSelectModal extends Modal {
         });
 
         img.addEventListener('click', () => {
-            const targetPropertyKey = "banner";
+            const targetPropertyKey = this.plugin.settings.bannerProperty;
             const file = this.app.workspace.getActiveFile();
             
             if(file == null) return;
