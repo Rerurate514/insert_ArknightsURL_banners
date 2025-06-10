@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-sample-plugin",
+	"name": "insert-arknights-url-banner",
 	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"description": "insert arknights url to banner",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
