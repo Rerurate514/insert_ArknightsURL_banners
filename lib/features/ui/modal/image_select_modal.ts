@@ -351,7 +351,7 @@ export class ImageSelectModal extends Modal {
         container.style.padding = "20px";
         container.style.maxHeight = "calc(70vh - 60px)";
         container.style.overflowY = "auto";
-        container.style.scrollbarWidth = "thin";
+        //container.style.scrollbarWidth = "thin";
         
         return container;
     }
