@@ -1,12 +1,12 @@
+import { IMAGE_TOTAL } from "lib/const/max_images_cnt";
 import { ImageRepository } from "lib/repository/image_repository";
 import IAUBPlugin from "main";
 import { App, Modal } from "obsidian";
 
 export class ImageSelectModal extends Modal {
-    readonly IMAGE_TOTAL = 1865;
     private imgRepo: ImageRepository;
     private currentPage = 1;
-    private pageSize = 12;
+    private pageSize;
     private totalPages;
     private gridContainer: HTMLElement | null = null;
     private controlsContainer: HTMLElement | null = null;
@@ -20,7 +20,8 @@ export class ImageSelectModal extends Modal {
         this.plugin = plugin;
         this.imgRepo = new ImageRepository();
 
-        this.totalPages = Math.ceil(this.IMAGE_TOTAL / this.pageSize);
+        this.pageSize = plugin.settings.imagesPerPage || 12;
+        this.totalPages = Math.ceil(IMAGE_TOTAL / this.pageSize);
     }
 
     async onOpen() {
