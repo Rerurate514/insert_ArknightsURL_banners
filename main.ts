@@ -1,16 +1,10 @@
-import { ImageSelectModal } from 'lib/features/ui/modal/image_select_modal';
-import { App, MarkdownView, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { DEFAULT_SETTINGS, IAUBPluginSettings } from 'lib/settings/settings';
+import { IAUBSettingTab } from 'lib/settings/settings-tab';
+import { ImageSelectModal } from 'lib/ui/modal/image_select_modal';
+import { MarkdownView, Plugin } from 'obsidian';
 
-interface MyPluginSettings {
-	bannerProperty: string;
-}
-
-const DEFAULT_SETTINGS: MyPluginSettings = {
-	bannerProperty: 'banner'
-}
-
-export default class MyPlugin extends Plugin {
-	settings: MyPluginSettings;
+export default class IAUBPlugin extends Plugin {
+	settings: IAUBPluginSettings;
 
 	async onload() {
 		await this.loadSettings();
@@ -30,7 +24,7 @@ export default class MyPlugin extends Plugin {
 			}
 		});
 
-		this.addSettingTab(new SampleSettingTab(this.app, this));
+		this.addSettingTab(new IAUBSettingTab(this.app, this));
 
 		this.registerDomEvent(document, 'click', (evt: MouseEvent) => {
 			console.log('click', evt);
@@ -49,31 +43,5 @@ export default class MyPlugin extends Plugin {
 
 	async saveSettings() {
 		await this.saveData(this.settings);
-	}
-}
-
-class SampleSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
-
-	constructor(app: App, plugin: MyPlugin) {
-		super(app, plugin);
-		this.plugin = plugin;
-	}
-
-	display(): void {
-		const {containerEl} = this;
-
-		containerEl.empty();
-
-		new Setting(containerEl)
-			.setName('insert arknights url property')
-			.setDesc('default is "banner"')
-			.addText(text => text
-				.setPlaceholder('default is "banner"')
-				.setValue(this.plugin.settings.bannerProperty)
-				.onChange(async (value) => {
-					this.plugin.settings.bannerProperty = value;
-					await this.plugin.saveSettings();
-				}));
 	}
 }

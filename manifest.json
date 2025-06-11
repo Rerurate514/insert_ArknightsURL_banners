@@ -3,7 +3,7 @@
 	"name": "Insert Arknights URL Banner",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
+	"description": "This plugin provides a modal that allows you to insert Arknights images in the banner property",
 	"author": "Rerurate_514",
 	"isDesktopOnly": false
 }
