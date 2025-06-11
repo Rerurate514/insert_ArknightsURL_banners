@@ -1,4 +1,4 @@
-import { ImageRepository } from "lib/features/repository/image_repository";
+import { ImageRepository } from "lib/repository/image_repository";
 import MyPlugin from "main";
 import { App, Modal } from "obsidian";
 

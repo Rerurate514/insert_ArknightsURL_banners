@@ -1,4 +1,4 @@
-import { ImageSelectModal } from 'lib/features/ui/modal/image_select_modal';
+import { ImageSelectModal } from 'lib/ui/modal/image_select_modal';
 import { App, MarkdownView, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
 interface MyPluginSettings {
