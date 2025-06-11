@@ -26,15 +26,7 @@ export class ImageSelectModal extends Modal {
     async onOpen() {
         const { contentEl } = this;
         
-        this.modalEl.style.width = '70vw';
-        this.modalEl.style.height = '65vh';
-        this.modalEl.style.maxWidth = '1000px';
-        this.modalEl.style.maxHeight = '570px';
-        
-        if (window.innerWidth < 768) {
-            this.modalEl.style.width = '95vw';
-            this.modalEl.style.height = '90vh';
-        }
+        this.modalEl.classList.add('image-select-modal');
         
         contentEl.setText('Select Image!');
         
@@ -58,22 +50,14 @@ export class ImageSelectModal extends Modal {
 
     private createControls(): HTMLElement {
         const controlsDiv = document.createElement('div');
-        controlsDiv.style.display = 'flex';
-        controlsDiv.style.justifyContent = 'center';
-        controlsDiv.style.alignItems = 'center';
-        controlsDiv.style.gap = '10px';
-        controlsDiv.style.padding = '10px 20px';
-        controlsDiv.style.borderBottom = '1px solid #333';
-        controlsDiv.style.marginBottom = '10px';
+        controlsDiv.classList.add('image-select-controls');
 
         const prevBtn = this.createButton('← Previous', () => this.goToPreviousPage());
         prevBtn.id = 'prev-btn';
         
         const pageInfo = document.createElement('span');
         pageInfo.id = 'page-info';
-        pageInfo.style.margin = '0 20px';
-        pageInfo.style.fontSize = '14px';
-        pageInfo.style.color = '#666';
+        pageInfo.classList.add('image-select-page-info');
         
         const nextBtn = this.createButton('Next →', () => this.goToNextPage());
         nextBtn.id = 'next-btn';
@@ -82,13 +66,7 @@ export class ImageSelectModal extends Modal {
         jumpInput.type = 'number';
         jumpInput.min = '1';
         jumpInput.max = this.totalPages.toString();
-        jumpInput.style.width = '60px';
-        jumpInput.style.padding = '4px 8px';
-        jumpInput.style.margin = '0 10px';
-        jumpInput.style.borderRadius = '4px';
-        jumpInput.style.border = '1px solid #555';
-        jumpInput.style.backgroundColor = '#2a2a2a';
-        jumpInput.style.color = '#fff';
+        jumpInput.classList.add('image-select-jump-input');
         
         const jumpBtn = this.createButton('Go', () => {
             const page = parseInt(jumpInput.value);
@@ -110,23 +88,9 @@ export class ImageSelectModal extends Modal {
     private createButton(text: string, onClick: () => void): HTMLButtonElement {
         const btn = document.createElement('button');
         btn.textContent = text;
-        btn.style.padding = '6px 12px';
-        btn.style.backgroundColor = '#4a4a4a';
-        btn.style.color = '#fff';
-        btn.style.border = '1px solid #666';
-        btn.style.borderRadius = '4px';
-        btn.style.cursor = 'pointer';
-        btn.style.fontSize = '12px';
+        btn.classList.add('image-select-btn');
         
         btn.addEventListener('click', onClick);
-        
-        btn.addEventListener('mouseenter', () => {
-            btn.style.backgroundColor = '#5a5a5a';
-        });
-        
-        btn.addEventListener('mouseleave', () => {
-            btn.style.backgroundColor = '#4a4a4a';
-        });
         
         return btn;
     }
@@ -176,7 +140,7 @@ export class ImageSelectModal extends Modal {
                 this.appendImages(urls);
             }
             
-            //this.preloadNextPage();
+            this.preloadNextPage();
             
         } catch (error) {
             this.hideLoading();
@@ -204,30 +168,10 @@ export class ImageSelectModal extends Modal {
         if (!this.gridContainer) return;
         
         this.loadingElement = document.createElement('div');
-        this.loadingElement.style.display = 'flex';
-        this.loadingElement.style.justifyContent = 'center';
-        this.loadingElement.style.alignItems = 'center';
-        this.loadingElement.style.height = '200px';
-        this.loadingElement.style.fontSize = '16px';
-        this.loadingElement.style.color = '#666';
+        this.loadingElement.classList.add('image-select-loading');
         
         const spinner = document.createElement('div');
-        spinner.style.width = '20px';
-        spinner.style.height = '20px';
-        spinner.style.border = '2px solid #333';
-        spinner.style.borderTop = '2px solid #666';
-        spinner.style.borderRadius = '50%';
-        spinner.style.animation = 'spin 1s linear infinite';
-        spinner.style.marginRight = '10px';
-        
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
-        `;
-        document.head.appendChild(style);
+        spinner.classList.add('image-select-spinner');
         
         this.loadingElement.appendChild(spinner);
         this.loadingElement.appendChild(document.createTextNode(`Loading page ${this.currentPage}...`));
@@ -294,22 +238,7 @@ export class ImageSelectModal extends Modal {
     }
 
     private styleImage(img: HTMLImageElement): void {
-        img.style.width = "100%";
-        img.style.height = "100%";
-        img.style.objectFit = "cover";
-        img.style.objectPosition = "center";
-        img.style.display = "block";
-        img.style.borderRadius = "8px";
-        img.style.cursor = "pointer";
-        
-        img.addEventListener('mouseenter', () => {
-            img.style.transform = "scale(1.02)";
-            img.style.transition = "transform 0.2s ease";
-        });
-        
-        img.addEventListener('mouseleave', () => {
-            img.style.transform = "scale(1)";
-        });
+        img.classList.add('image-select-img');
 
         img.addEventListener('click', () => {
             const targetPropertyKey = this.plugin.settings.bannerProperty;
@@ -328,30 +257,16 @@ export class ImageSelectModal extends Modal {
         });
     }
 
-
     private createImageWrapper(): HTMLElement {
         const wrapper = document.createElement("div");
-
-        wrapper.style.width = "100%";
-        wrapper.style.aspectRatio = "16/9";
-        wrapper.style.overflow = "hidden";
-        wrapper.style.borderRadius = "8px";
-        wrapper.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
-        wrapper.style.position = "relative";
+        wrapper.classList.add('image-select-wrapper');
         
         return wrapper;
     }
 
     private createGridContainer(): HTMLElement {
         const container = document.createElement("div");
-
-        container.style.display = "grid";
-        container.style.gridTemplateColumns = "repeat(auto-fit, minmax(200px, 1fr))";
-        container.style.gap = "15px";
-        container.style.padding = "20px";
-        container.style.maxHeight = "calc(70vh - 60px)";
-        container.style.overflowY = "auto";
-        //container.style.scrollbarWidth = "thin";
+        container.classList.add('image-select-grid');
         
         return container;
     }
