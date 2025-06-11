@@ -1,16 +1,16 @@
 import { ImageSelectModal } from 'lib/ui/modal/image_select_modal';
 import { App, MarkdownView, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
-interface MyPluginSettings {
+interface IAUBPluginSettings {
 	bannerProperty: string;
 }
 
-const DEFAULT_SETTINGS: MyPluginSettings = {
+const DEFAULT_SETTINGS: IAUBPluginSettings = {
 	bannerProperty: 'banner'
 }
 
-export default class MyPlugin extends Plugin {
-	settings: MyPluginSettings;
+export default class IAUBPlugin extends Plugin {
+	settings: IAUBPluginSettings;
 
 	async onload() {
 		await this.loadSettings();
@@ -30,7 +30,7 @@ export default class MyPlugin extends Plugin {
 			}
 		});
 
-		this.addSettingTab(new SampleSettingTab(this.app, this));
+		this.addSettingTab(new SettingTab(this.app, this));
 
 		this.registerDomEvent(document, 'click', (evt: MouseEvent) => {
 			console.log('click', evt);
@@ -52,10 +52,10 @@ export default class MyPlugin extends Plugin {
 	}
 }
 
-class SampleSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+class SettingTab extends PluginSettingTab {
+	plugin: IAUBPlugin;
 
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(app: App, plugin: IAUBPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}

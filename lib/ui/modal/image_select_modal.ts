@@ -1,5 +1,5 @@
 import { ImageRepository } from "lib/repository/image_repository";
-import MyPlugin from "main";
+import IAUBPlugin from "main";
 import { App, Modal } from "obsidian";
 
 export class ImageSelectModal extends Modal {
@@ -13,9 +13,9 @@ export class ImageSelectModal extends Modal {
     private loadingElement: HTMLElement | null = null;
     private isLoading = false;
 
-    private plugin: MyPlugin;
+    private plugin: IAUBPlugin;
 
-    constructor(app: App, plugin: MyPlugin) {
+    constructor(app: App, plugin: IAUBPlugin) {
         super(app);
         this.plugin = plugin;
         this.imgRepo = new ImageRepository();
