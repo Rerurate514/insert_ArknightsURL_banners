@@ -3,9 +3,9 @@
 /* Modal Container */
 .image-select-modal {
     width: 70vw;
-    height: 65vh;
+    height: 85vh;
     max-width: 1000px;
-    max-height: 570px;
+    max-height: 6500px;
 }
 
 @media (max-width: 768px) {
@@ -13,6 +13,11 @@
         width: 95vw;
         height: 90vh;
     }
+}
+
+/* Modal Header */
+.image-select-header {
+    text-align: center;
 }
 
 /* Controls Container */

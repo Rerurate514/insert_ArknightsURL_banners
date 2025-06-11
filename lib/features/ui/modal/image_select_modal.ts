@@ -28,7 +28,7 @@ export class ImageSelectModal extends Modal {
         
         this.modalEl.classList.add('image-select-modal');
         
-        contentEl.setText('Select Image!');
+        contentEl.appendChild(this.createHeader());
         
         this.controlsContainer = this.createControls();
         contentEl.appendChild(this.controlsContainer);
@@ -46,6 +46,17 @@ export class ImageSelectModal extends Modal {
         contentEl.empty();
         this.gridContainer = null;
         this.controlsContainer = null;
+    }
+
+    private createHeader(): HTMLElement {
+        const header = document.createElement('div');
+        header.classList.add('image-select-header');
+        const title = document.createElement('h2');
+        title.textContent = 'Select an Image';
+
+        header.appendChild(title);
+
+        return header;;
     }
 
     private createControls(): HTMLElement {
