@@ -135,7 +135,7 @@ export class ImageSelectModal extends Modal {
         this.updateControls();
         
         if (this.gridContainer) {
-            this.gridContainer.innerHTML = '';
+            this.gridContainer.textContent = '';
         }
         
         this.showLoading();
