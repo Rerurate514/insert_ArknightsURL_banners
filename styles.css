@@ -136,3 +136,13 @@
         transform: rotate(360deg); 
     }
 }
+
+
+/* setting-tav */
+.textField-warn {
+    border-color: #ff6b6b;
+}
+
+.textField-success {
+    border-color: #51cf66;
+}

@@ -47,14 +47,16 @@ export class IAUBSettingTab extends PluginSettingTab {
                     });
                 
                 text.inputEl.addEventListener('invalid', () => {
-                    text.inputEl.style.borderColor = '#ff6b6b';
+                    text.inputEl.classList.add("textField-warn")
                 });
                 
                 text.inputEl.addEventListener('input', () => {
                     if (text.inputEl.validity.valid) {
-                        text.inputEl.style.borderColor = '#51cf66';
+                        text.inputEl.classList.remove("textField-success")
+                        text.inputEl.classList.add("textField-success")
                     } else {
-                        text.inputEl.style.borderColor = '#ff6b6b';
+                        text.inputEl.classList.remove("textField-success")
+                        text.inputEl.classList.add("textField-success")
                     }
                 });
             });

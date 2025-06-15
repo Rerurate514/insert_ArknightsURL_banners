@@ -57,7 +57,7 @@ export class ImageSelectModal extends Modal {
 
         header.appendChild(title);
 
-        return header;;
+        return header;
     }
 
     private createControls(): HTMLElement {
@@ -135,7 +135,7 @@ export class ImageSelectModal extends Modal {
         this.updateControls();
         
         if (this.gridContainer) {
-            this.gridContainer.innerHTML = '';
+            this.gridContainer.textContent = '';
         }
         
         this.showLoading();
