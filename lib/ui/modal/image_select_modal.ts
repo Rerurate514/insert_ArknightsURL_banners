@@ -57,7 +57,7 @@ export class ImageSelectModal extends Modal {
 
         header.appendChild(title);
 
-        return header;;
+        return header;
     }
 
     private createControls(): HTMLElement {
