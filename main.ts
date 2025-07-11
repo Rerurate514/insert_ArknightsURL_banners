@@ -25,10 +25,6 @@ export default class IAUBPlugin extends Plugin {
 		});
 
 		this.addSettingTab(new IAUBSettingTab(this.app, this));
-
-		this.registerDomEvent(document, 'click', (evt: MouseEvent) => {
-			console.log('click', evt);
-		});
 	}
 
 	onunload() {
