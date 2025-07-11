@@ -11,7 +11,7 @@ export default class IAUBPlugin extends Plugin {
 
 		this.addCommand({
 			id: 'select_insertURL_to_banners',
-			name: 'select-insertURL-to-banners',
+			name: 'Select insert URL to banners',
 			checkCallback: (checking: boolean) => {
 				const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
 				if (markdownView) {
