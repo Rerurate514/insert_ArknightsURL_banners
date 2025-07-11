@@ -53,7 +53,7 @@ export class ImageSelectModal extends Modal {
         const header = document.createElement('div');
         header.classList.add('image-select-header');
         const title = document.createElement('h2');
-        title.textContent = 'Select an Image';
+        title.textContent = 'Select an image';
 
         header.appendChild(title);
 

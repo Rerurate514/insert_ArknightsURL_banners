@@ -10,8 +10,8 @@ export default class IAUBPlugin extends Plugin {
 		await this.loadSettings();
 
 		this.addCommand({
-			id: 'select insertURL to banners',
-			name: 'select-insertURL-to-banners',
+			id: 'select_insertURL_to_banners',
+			name: 'Select insert URL to banners',
 			checkCallback: (checking: boolean) => {
 				const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
 				if (markdownView) {
@@ -25,10 +25,6 @@ export default class IAUBPlugin extends Plugin {
 		});
 
 		this.addSettingTab(new IAUBSettingTab(this.app, this));
-
-		this.registerDomEvent(document, 'click', (evt: MouseEvent) => {
-			console.log('click', evt);
-		});
 	}
 
 	onunload() {
