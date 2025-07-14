@@ -1,7 +1,7 @@
 {
 	"id": "insert-arknights-url-banner",
 	"name": "Insert Arknights URL Banner",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "0.15.0",
 	"description": "Select the Arknights image and place it in the banner property.",
 	"author": "Rerurate_514",
